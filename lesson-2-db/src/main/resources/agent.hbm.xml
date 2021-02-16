@@ -1,0 +1,28 @@
+<?xml version='1.0'?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+
+<hibernate-mapping package="Entities">
+
+    <class name="Agent" table="agents">
+        <id name="agent_code" type="java.lang.String" column="agent_code" />
+
+        <property name="agent_name" >
+            <column name="agent_name" />
+        </property>
+        <property name="working_area" >
+            <column name="working_area" />
+        </property>
+        <property name="commission" >
+            <column name="commission" />
+        </property>
+        <property name="phone_no" >
+            <column name="phone_no" />
+        </property>
+        <property name="country" >
+            <column name="country" />
+        </property>
+    </class>
+
+</hibernate-mapping>
