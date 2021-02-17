@@ -14,17 +14,17 @@ public class CustomerRepository {
         this.dbConnectionManager = new DBConnectionManager();
     }
 
-
     public Customer getCustomerByCode(String code){
         Customer customer = null;
-        try {
-            Connection conn = this.dbConnectionManager.connect();
-            PreparedStatement st = conn.prepareStatement("select * from customer where cust_code = ?");
+        try (Connection conn = this.dbConnectionManager.connect();
+             PreparedStatement st = conn.prepareStatement("select * from customer where cust_code = ?")){
+
             st.setString(1, code);
-            System.out.println(st);
+
             ResultSet rs = st.executeQuery();
             while(rs.next()){
-                customer = new Customer(rs.getString(1),
+                customer = new Customer(
+                        rs.getString(1),
                         rs.getString(2),
                         rs.getString(3),
                         rs.getString(4),
@@ -37,8 +37,6 @@ public class CustomerRepository {
                         rs.getString(11),
                         rs.getString(12));
             }
-            st.close();
-            conn.close();
         }
         catch (SQLException e){
             System.out.println(e.getMessage());

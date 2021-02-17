@@ -22,12 +22,13 @@ public class CustomerServlet extends HttpServlet {
         Customer customer = customerRepository.getCustomerByCode(code);
         if (customer != null){
             resp.getWriter().println(customer);
+            resp.setStatus(HttpServletResponse.SC_OK);
         } else {
             resp.getWriter().println("Entities.Customer not found");
+            resp.setStatus(HttpServletResponse.SC_NOT_FOUND);
         }
 
         resp.setContentType("text/html;charset=utf-8");
-        resp.setStatus(HttpServletResponse.SC_OK);
     }
 
     @Override

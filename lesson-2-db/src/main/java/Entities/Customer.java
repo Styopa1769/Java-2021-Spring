@@ -14,7 +14,9 @@ public class Customer {
     private String phone_no;
     private String agent_code;
 
-    public Customer(String cust_code, String cust_name, String cust_city, String working_area, String cust_country, double grade, double opening_ant, double receive_ant, double payment_ant, double outstanding_ant, String phone_no, String agent_code) {
+    public Customer(String cust_code, String cust_name, String cust_city, String working_area, String cust_country,
+                    double grade, double opening_ant, double receive_ant, double payment_ant, double outstanding_ant,
+                    String phone_no, String agent_code) {
         this.cust_code = cust_code;
         this.cust_name = cust_name;
         this.cust_city = cust_city;
