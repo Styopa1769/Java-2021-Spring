@@ -8,13 +8,14 @@ import lesson5.repositories.UserRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 
 @RestController
-@Api(value = "lesson4", description = "some manipulations with users")
+@Api("user controller")
 public class UserController {
     @Autowired
     UserRepository userRepository;
@@ -22,12 +23,13 @@ public class UserController {
     @GetMapping("/users")
     @ApiOperation("get all users")
     public ResponseEntity<List<User>> getUsers() {
-        try {
-            return ResponseEntity.ok(userRepository.findAll());
-        } catch (ResourceNotFoundException e)
-        {
-            return ResponseEntity.notFound().build();
-        }
+        return ResponseEntity.ok(userRepository.findAll());
+    }
+
+    @GetMapping("/users/{id}")
+    @ApiOperation("get user by id")
+    public ResponseEntity<User> getUserById(@PathVariable("id") Long id) {
+        return userRepository.findById(id).map(ResponseEntity::ok).orElseGet(() -> ResponseEntity.notFound().build());
     }
 
     @PostMapping("/users")

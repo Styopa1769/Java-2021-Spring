@@ -22,20 +22,20 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)//
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("lesson4.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("lesson5.controllers"))
                 .paths(Predicates.not(PathSelectors.regex("/error")))
                 .build()
                 .apiInfo(metadata())
                 .useDefaultResponseMessages(false)
-                .pathMapping("api")
+                .pathMapping("")
                 .genericModelSubstitutes(Optional.class);
     }
 
     private ApiInfo metadata() {
-        return new ApiInfoBuilder()//
-                .title("lesson 4")//
-                .version("0.0.1")//
-                .contact(new Contact("Ruslan Sungatullin", null, "t.me/sunruslan"))//
+        return new ApiInfoBuilder()
+                .title("lesson 5")
+                .version("0.0.1")
+                .contact(new Contact("Stepan Shcherbakov", "t.me/styopa1769", null))
                 .build();
     }
 }
