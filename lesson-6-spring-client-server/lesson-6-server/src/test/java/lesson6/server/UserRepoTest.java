@@ -16,7 +16,7 @@ import java.util.List;
 @TestMethodOrder(value = MethodOrderer.OrderAnnotation.class)
 public class UserRepoTest {
     private static final User USER_TO_TEST = new User(1L, "name", "hash", new ArrayList<>());
-    private static final Account ACCOUNT_TO_TEST = new Account(1L, "1", USER_TO_TEST);
+    private static final Account ACCOUNT_TO_TEST = new Account(2L, "1", USER_TO_TEST);
 
     @Autowired
     UserRepository userRepository;

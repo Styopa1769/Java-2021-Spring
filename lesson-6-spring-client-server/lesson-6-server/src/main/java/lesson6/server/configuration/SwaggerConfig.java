@@ -22,7 +22,7 @@ public class SwaggerConfig {
     public Docket api() {
         return new Docket(DocumentationType.SWAGGER_2)//
                 .select()
-                .apis(RequestHandlerSelectors.basePackage("lesson5.controllers"))
+                .apis(RequestHandlerSelectors.basePackage("lesson6.server.controllers"))
                 .paths(Predicates.not(PathSelectors.regex("/error")))
                 .build()
                 .apiInfo(metadata())
@@ -33,7 +33,7 @@ public class SwaggerConfig {
 
     private ApiInfo metadata() {
         return new ApiInfoBuilder()
-                .title("lesson 5")
+                .title("lesson 6")
                 .version("0.0.1")
                 .contact(new Contact("Stepan Shcherbakov", "t.me/styopa1769", null))
                 .build();

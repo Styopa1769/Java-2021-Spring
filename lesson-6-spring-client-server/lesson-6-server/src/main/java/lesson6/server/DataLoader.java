@@ -13,6 +13,7 @@ import org.springframework.boot.ApplicationRunner;
 import org.springframework.stereotype.Component;
 
 import java.util.ArrayList;
+import java.util.Collections;
 
 @Component
 public class DataLoader implements ApplicationRunner {
@@ -34,9 +35,11 @@ public class DataLoader implements ApplicationRunner {
         User user = new User(1L, "name", "hash", new ArrayList<>());
         Account account = new Account(1L, "1", user);
 
-        userRepository.save(user);
+        User savedUser = userRepository.save(user);
         accountRepository.save(account);
+        savedUser.setAccounts(Collections.singletonList(account));
         userRepository.save(user);
+
         apiUserRepository.save(new ApiUser(1L, "styopa", BCrypt.hashpw("hash", BCrypt.gensalt())));
     }
 }
